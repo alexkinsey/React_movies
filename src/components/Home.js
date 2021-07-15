@@ -6,6 +6,7 @@ import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config';
 // Components
 import HeroImage from './HeroImage';
 import Grid from './Grid';
+import Thumb from './Thumb';
 
 // Hook
 import { useHomeFetch } from '../hooks/useHomeFetch';
@@ -14,14 +15,7 @@ import { useHomeFetch } from '../hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg';
 
 const Home = () => {
-  const {
-    state,
-    loading,
-    error,
-    searchTerm,
-    setSearchTerm,
-    setIsLoadingMore
-  } = useHomeFetch();
+  const { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } = useHomeFetch();
 
   console.log(state);
 
@@ -38,9 +32,14 @@ const Home = () => {
           text={state.results[0].overview}
         />
       ) : null}
-      <Grid header='Popular Movies'>
-        {state.results.map(movie => (
-          <div key={movie.id}>{movie.title}</div>
+      <Grid header="Popular Movies">
+        {state.results.map((movie) => (
+          <Thumb
+            key={movie.id}
+            clickable
+            image={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : NoImage}
+            movieId={movie.id}
+          />
         ))}
       </Grid>
     </>
