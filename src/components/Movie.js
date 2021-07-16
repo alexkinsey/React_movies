@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 // CONFIG
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../config';
 
-// COMPONETS
+// COMPONENTS
 import Grid from './Grid';
 import Spinner from './Spinner';
 import BreadCrumb from './BreadCrumb';
@@ -22,7 +22,7 @@ const Movie = () => {
   const { id } = useParams();
   const { state: movie, loading, error } = useMovieFetch(id);
 
-  console.log(movie);
+  // console.log(movie);
 
   if (loading) return <Spinner />;
   if (error) return <div>Something went wrong...</div>;
