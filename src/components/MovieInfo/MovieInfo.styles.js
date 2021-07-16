@@ -25,14 +25,18 @@ export const Content = styled.div`
   background: rgba(0, 0, 0, 0.7);
   border-radius: 20px;
 
+  .thumb-image {
+    img {
+      :hover {
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        transform: scale(1);
+      }
+    }
+  }
+
   @media screen and (max-width: 768px) {
     display: block;
     max-height: none;
-  }
-
-  .thumb-image > Image > :hover {
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-    transform: scale(1);
   }
 `;
 
